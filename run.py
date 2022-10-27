@@ -1,26 +1,24 @@
 import os
 
-import umap
-import altair as alt
-
+import pandas as pd
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import re
-import argparse
-
+import umap
+import altair as alt
 from sklearn.cluster import KMeans
+
 from cleantext import clean
 from sentence_transformers import SentenceTransformer
-import altair as alt
-
+import re
 import nltk
 from nltk.corpus import stopwords
-nltk.download('stopwords')
-nltk.download('punkt')
 from nltk.util import ngrams
 
 from collections import Counter
+import argparse
+
+nltk.download('stopwords')
+nltk.download('punkt')
 
 
 def clean_data(data: list, view: bool, save_dir: str):
@@ -35,6 +33,8 @@ def clean_data(data: list, view: bool, save_dir: str):
         clean_text = clean_text.replace('*', '')
         clean_text = clean_text.replace('-', '')
         clean_text = clean_text.replace('\n', '. ')
+        clean_text = clean_text.replace('..', '.')
+        clean_text = clean_text.replace('  ', ' ')
         
         if view:
             txt_file_str += f'BEFORE: \n\n{text} \n\nAFTER: \n\n{clean_text} \n\n' + 80 * '-' + '\n\n'
@@ -68,8 +68,8 @@ def visualize(answers, embeddings, classes, title):
         y=alt.Y('Y', scale=alt.Scale(zero=False), axis=alt.Axis(labels=False, ticks=False, domain=False)),
         color='Cluster',
         tooltip=['Answer']).properties(
-            width=500, 
-            height=500, 
+            width=700, 
+            height=700, 
             title=title).configure_legend(
                 orient='right', 
                 titleFontSize=16,
@@ -78,7 +78,7 @@ def visualize(answers, embeddings, classes, title):
     chart.show()
     
 
-def run(data_path: str, model: str, n_clusters: int, n_grams: int, save_dir: str):
+def run(data_path: str, model: str, n_clusters: int, save_dir: str):
     dataset = pd.read_excel(data_path, header=0)
 
     for i in range(len(dataset.columns)):
@@ -105,46 +105,55 @@ def run(data_path: str, model: str, n_clusters: int, n_grams: int, save_dir: str
         for j in range(n_clusters):
             cluster = np.array(answers)[np.array(classes) == j]
 
-            frequencies = Counter([])
+            unigrams_frequencies = Counter([])
+            bigrams_frequencies = Counter([])
+            trigrams_frequencies = Counter([])
             
             for text in cluster:
                 tokens = [re.sub(r'\W+', '', t) for t in text.split() if len(t) > 1 or t.isalnum()]
                 tokens = [value for value in tokens if value not in stopwords.words('english')]
                 
-                grams = ngrams(tokens, n_grams)
-                frequencies += Counter(grams)
-            
-            frequencies = frequencies.most_common()
-            
-            with open(save_dir + f'ngrams_question{i}_cluster{j}.txt', 'w') as f:
-                f.write(f'QUESTION: \n{question}\n\n')
+                unigrams = ngrams(tokens, 1)
+                bigrams = ngrams(tokens, 2)
+                trigrams = ngrams(tokens, 3)
                 
-                for words, count in frequencies:
-                    f.write(' '.join(words) + f': {count}\n')
+                unigrams_frequencies += Counter(unigrams)
+                bigrams_frequencies += Counter(bigrams)
+                trigrams_frequencies += Counter(trigrams)
+            
+            unigrams_frequencies = unigrams_frequencies.most_common()
+            bigrams_frequencies = bigrams_frequencies.most_common()
+            trigrams_frequencies = trigrams_frequencies.most_common()
+            
+            with open(save_dir + f'unigrams_question{i+1}_cluster{j+1}.txt', 'w') as f_unigrams, open(save_dir + f'bigrams_question{i+1}_cluster{j+1}.txt', 'w') as f_bigrams, open(save_dir + f'trigrams_question{i+1}_cluster{j+1}.txt', 'w') as f_trigrams:
+                f_unigrams.write(f'QUESTION: \n{question}\n\n')
+                f_bigrams.write(f'QUESTION: \n{question}\n\n')
+                f_trigrams.write(f'QUESTION: \n{question}\n\n')
+                
+                f_unigrams.write('\n'.join([' '.join(words) + f': {count}' for words, count in unigrams_frequencies]))
+                f_bigrams.write('\n'.join([' '.join(words) + f': {count}' for words, count in bigrams_frequencies]))
+                f_trigrams.write('\n'.join([' '.join(words) + f': {count}' for words, count in trigrams_frequencies]))
         
         visualize(answers=answers, 
                   embeddings=embeddings, 
                   classes=classes, 
-                  title=question)
+                  title=f'Question {i+1}')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     
     parser = argparse.ArgumentParser()
     
-    parser.add_argument('--data_path', type=str, default='./example/classroom_norms.xlsx', 
+    parser.add_argument('--data_path', type=str, default='./classroom_norms.xlsx', 
                         help='Path to excel (.xlsx) file containing survey answers.')
     
-    parser.add_argument('--model', type=str, default='sentence-transformers/all-MiniLM-L6-v2', 
+    parser.add_argument('--model', type=str, default='all-mpnet-base-v2', 
                         help='The embedding model from sentence-transformers.')
     
     parser.add_argument('--n_clusters', type=int, default=3, 
                         help='The number of clusters for kmeans algorithm.')
     
-    parser.add_argument('--n_grams', type=int, default=2, 
-                        help='The number of clusters for kmeans algorithm.')
-    
-    parser.add_argument('--save_dir', type=str, default='./example/', 
+    parser.add_argument('--save_dir', type=str, default='./examples2/', 
                         help='The directory to save results in.')
     
     args = parser.parse_args()
@@ -156,6 +165,5 @@ if __name__ == "__main__":
     
     run(data_path=args.data_path,
         model=args.model,
-        n_clusters=args.n_clusters, 
-        n_grams=args.n_grams,
+        n_clusters=args.n_clusters,
         save_dir=args.save_dir)
