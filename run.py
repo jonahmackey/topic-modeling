@@ -1,6 +1,7 @@
 import os
 
 import altair as alt
+import altair_viewer
 
 import pandas as pd
 import numpy as np
@@ -17,18 +18,15 @@ import nltk
 import argparse
 
 
-def clean_data(data: list, 
-               save_dir: str):  
+def clean_data(data: list):  
     """Cleans data by removing stopwords, punctuation, and numbers. 
     Splits the result into sentences. 
     Returns a list of cleaned sentences.
 
     Args:
         data (list): Text data stored in a list of strings.
-        save_dir (str): The directory to save the cleaned data to.
     """
     cleaned_data = []
-    txt_file_str = ''
 
     for i in range(len(data)): 
         text = data[i]
@@ -44,15 +42,8 @@ def clean_data(data: list,
         if clean_text[-1] != '.':
             clean_text = clean_text + '.'
             
-        clean_text = nltk.tokenize.sent_tokenize(clean_text)
-        
-        clean_text_lines = '\n'.join(clean_text)
-        txt_file_str += f'BEFORE: \n\n{text} \n\nAFTER: \n\n{clean_text_lines} \n\n' + 80 * '-' + '\n\n'
-        
+        clean_text = nltk.tokenize.sent_tokenize(clean_text)        
         cleaned_data += clean_text
- 
-    with open(save_dir + 'data_cleaning.txt', 'w') as f:
-        f.write(txt_file_str)
     
     return cleaned_data
 
@@ -95,7 +86,7 @@ def visualize(text_data: list,
                 ).interactive()
             
     chart.save(save_dir + title + '_plot.html')
-    chart.show()
+    altair_viewer.display(chart, inline=True)
     
     
 def extract_topics(text_data: list, 
@@ -159,12 +150,12 @@ def extract_topics(text_data: list,
     return topics_df 
 
 
-def run(data_path: str, 
+def run(data_path: str,
+        question_n: int,
         model: str, 
         embed_dim: int, 
         eps: float, 
         min_samples: int,
-        apply_tfidf: bool,
         save_dir: str):
     """Runs the topic modeling pipeline.
     
@@ -182,61 +173,62 @@ def run(data_path: str,
         embed_dim (int): The dimension to reduce the embeddings to using UMAP before clustering.
         eps (float): The epsilon value to use for DBSCAN.
         min_samples (int): The minimum number of samples to use for DBSCAN.
-        apply_tfidf (bool): Whether to apply class tf-idf when extracting topics.
         save_dir (str): The directory to save the results to.
     """
     
-    dataset = pd.read_excel(data_path, header=0)
-
-    for i in range(len(dataset.columns)): 
-        
-        question = dataset.columns[i]
-
-        # clean data
-        answers = dataset[dataset.columns[i]]
-        answers = answers.dropna().tolist()
-        answers = clean_data(answers, save_dir) # 500
-        
-        # embed data
-        embedding_model = SentenceTransformer(model)
-        embeddings = embedding_model.encode(answers) 
-        
-        # reduce dimensionality of embeddings
-        reducer = umap.UMAP(n_components=embed_dim, metric='cosine', random_state=0)
-        embeddings = reducer.fit_transform(embeddings) 
-        
-        # cluster embeddings
-        clustering_model = DBSCAN(eps=eps, min_samples=min_samples, metric='euclidean')
-        # clustering_model = HDBSCAN(min_cluster_size=15, metric='euclidean')
-        classes = clustering_model.fit_predict(embeddings)
-        
-        # extract topics
-        topics = extract_topics(text_data=answers, 
-                                classes=classes, 
-                                apply_tfidf=apply_tfidf, 
-                                title=f'question_{i+1}',
-                                save_dir=save_dir)
-
-        if embed_dim > 2:
-            reducer = umap.UMAP(n_components=2, metric='euclidean', random_state=0)
-            embeddings = reducer.fit_transform(embeddings)
+    dataset = pd.read_excel(data_path, header=0)    
+    question = dataset.columns[question_n]
     
-        # visualization
-        visualize(text_data=answers, 
-                  embeddings=embeddings, 
-                  classes=classes,
-                  title=f'question_{i+1}', 
-                  save_dir=save_dir)
-        break
+    print('QUESTION:\n    ', f'"{question}"')
+
+    # clean data
+    answers = dataset[dataset.columns[question_n]].dropna().tolist()
+    answers = clean_data(answers) 
+    
+    # embed data
+    embedding_model = SentenceTransformer(model)
+    embeddings = embedding_model.encode(answers) 
+    
+    # reduce dimensionality of embeddings
+    reducer = umap.UMAP(n_components=embed_dim, metric='cosine', random_state=0)
+    embeddings = reducer.fit_transform(embeddings) 
+    
+    # cluster embeddings
+    clustering_model = DBSCAN(eps=eps, min_samples=min_samples, metric='euclidean')
+    # clustering_model = HDBSCAN(min_cluster_size=15, metric='euclidean')
+    classes = clustering_model.fit_predict(embeddings)
+    
+    # extract topics
+    # topics = extract_topics(text_data=answers, 
+    #                         classes=classes, 
+    #                         apply_tfidf=apply_tfidf, 
+    #                         title=f'question_{question_n}',
+    #                         save_dir=save_dir)
+
+    if embed_dim > 2:
+        reducer = umap.UMAP(n_components=2, metric='euclidean', random_state=0)
+        embeddings = reducer.fit_transform(embeddings)
+
+    # visualization
+    visualize(text_data=answers, 
+              embeddings=embeddings, 
+              classes=classes,
+              title=f'question_{question_n}', 
+              save_dir=save_dir)
+    
+    return (answers, classes)
 
 
 if __name__ == '__main__':
-    # python run.py --data_path ./classroom_norms.xlsx --model all-MiniLM-L12-v2 --embed_dim 2 --eps 0.4 --min_samples 15 --save_dir ./example/
+    # python run.py --data_path ./classroom_norms.xlsx --question_n 0 --model all-MiniLM-L12-v2 --embed_dim 2 --eps 0.4 --min_samples 15 --save_dir ./example/
     
     parser = argparse.ArgumentParser()
     
     parser.add_argument('--data_path', type=str, default='./example/classroom_norms.xlsx', 
                         help='Path to excel (.xlsx) file containing survey answers.')
+    
+    parser.add_argument('--question_n', type=int, default=0, 
+                        help='Question number to analyze from the survey.')
     
     parser.add_argument('--model', type=str, default='all-MiniLM-L12-v2', 
                         help='The embedding model from sentence-transformers.')
@@ -260,10 +252,16 @@ if __name__ == '__main__':
     except:
         pass
     
-    run(data_path=args.data_path,
-        model=args.model,
-        embed_dim=args.embed_dim,
-        eps=args.eps,
-        min_samples=args.min_samples,
-        apply_tfidf=True,
-        save_dir=args.save_dir)
+    answers, classes = run(data_path=args.data_path,
+                           question_n=args.question_n,
+                           model=args.model,
+                           embed_dim=args.embed_dim,
+                           eps=args.eps,
+                           min_samples=args.min_samples,
+                           save_dir=args.save_dir)
+    
+    topics = extract_topics(text_data=answers, 
+                            classes=classes, 
+                            apply_tfidf=True, 
+                            title=f'question_{args.question_n}',
+                            save_dir=args.save_dir)
