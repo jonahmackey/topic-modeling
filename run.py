@@ -53,7 +53,8 @@ def visualize(text_data: list,
               embeddings: np.ndarray, 
               classes: list, 
               title: str, 
-              save_dir: str):
+              save_dir: str, 
+              notebook: False):
     """Provides an interactive visualization of the clustered 2D UMAP embeddings and plots the clusters.
     
     Args:
@@ -87,7 +88,11 @@ def visualize(text_data: list,
                 ).interactive()
             
     chart.save(save_dir + title + '_plot.html')
-    altair_viewer.show(chart)
+    
+    if notebook:
+        altair_viewer.display(chart, inline=True)
+    else:
+        altair_viewer.show(chart)
     
     
 def extract_topics(text_data: list, 
@@ -157,7 +162,8 @@ def run(data_path: str,
         embed_dim: int, 
         eps: float, 
         min_samples: int,
-        save_dir: str):
+        save_dir: str,
+        notebook: bool):
     """Runs the topic modeling pipeline.
     
     The pipeline consists of the following steps:
@@ -198,13 +204,6 @@ def run(data_path: str,
     clustering_model = DBSCAN(eps=eps, min_samples=min_samples, metric='euclidean')
     # clustering_model = HDBSCAN(min_cluster_size=15, metric='euclidean')
     classes = clustering_model.fit_predict(embeddings)
-    
-    # extract topics
-    # topics = extract_topics(text_data=answers, 
-    #                         classes=classes, 
-    #                         apply_tfidf=apply_tfidf, 
-    #                         title=f'question_{question_n}',
-    #                         save_dir=save_dir)
 
     if embed_dim > 2:
         reducer = umap.UMAP(n_components=2, metric='euclidean', random_state=0)
@@ -215,7 +214,8 @@ def run(data_path: str,
               embeddings=embeddings, 
               classes=classes,
               title=f'question_{question_n}', 
-              save_dir=save_dir)
+              save_dir=save_dir,
+              notebook=notebook)
     
     return (answers, classes)
 
@@ -259,7 +259,8 @@ if __name__ == '__main__':
                            embed_dim=args.embed_dim,
                            eps=args.eps,
                            min_samples=args.min_samples,
-                           save_dir=args.save_dir)
+                           save_dir=args.save_dir,
+                           notebook=False)
     
     topics = extract_topics(text_data=answers, 
                             classes=classes, 
