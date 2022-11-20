@@ -14,6 +14,7 @@ from sklearn.preprocessing import normalize
 from sentence_transformers import SentenceTransformer
 from cleantext import clean
 import nltk
+nltk.download('punkt')
 
 import argparse
 
