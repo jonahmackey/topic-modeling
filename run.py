@@ -86,7 +86,7 @@ def visualize(text_data: list,
                 ).interactive()
             
     chart.save(save_dir + title + '_plot.html')
-    altair_viewer.display(chart, inline=True)
+    altair_viewer.show(chart)
     
     
 def extract_topics(text_data: list, 
