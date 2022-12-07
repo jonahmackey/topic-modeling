@@ -23,7 +23,7 @@ import argparse
 
 
 def clean_data(text_data: list):  
-    """Cleans the text_data and splits it up into sentences. 
+    """Cleans the text_data and splits it up into sentences.
 
     Args:
         text_data (list): Text data stored in a list of strings.
@@ -205,7 +205,7 @@ def cluster(data_path: str,
     # cluster embeddings
     clustering_model = DBSCAN(eps=eps, min_samples=min_samples, metric='euclidean')
     classes = clustering_model.fit_predict(embeddings)
-
+    
     # visualization
     if embed_dim > 2:
         reducer = umap.UMAP(n_components=2, metric='euclidean', random_state=0)
@@ -319,24 +319,24 @@ if __name__ == '__main__':
     except:
         pass
     
-    # answers, classes = cluster(data_path=args.data_path,
-    #                             question_n=args.question_n,
-    #                             model=args.model,
-    #                             embed_dim=args.embed_dim,
-    #                             eps=args.eps,
-    #                             min_samples=args.min_samples,
-    #                             save_dir=args.save_dir,
-    #                             notebook=False)
-    
-    answers, classes = cluster_cohere(data_path=args.data_path,
+    answers, classes = cluster(data_path=args.data_path,
                                 question_n=args.question_n,
-                                model_size='small',
-                                api_key='YOUR_API_KEY',
-                                embed_dim=2,
+                                model=args.model,
+                                embed_dim=args.embed_dim,
                                 eps=args.eps,
                                 min_samples=args.min_samples,
                                 save_dir=args.save_dir,
                                 notebook=False)
+    
+    # answers, classes = cluster_cohere(data_path=args.data_path,
+    #                             question_n=args.question_n,
+    #                             model_size='small',
+    #                             api_key='YOUR_API_KEY',
+    #                             embed_dim=2,
+    #                             eps=args.eps,
+    #                             min_samples=args.min_samples,
+    #                             save_dir=args.save_dir,
+    #                             notebook=False)
     
     topics = extract_topics(text_data=answers, 
                             classes=classes, 
