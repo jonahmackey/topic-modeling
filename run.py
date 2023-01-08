@@ -261,16 +261,6 @@ if __name__ == '__main__':
                                 save_dir=args.save_dir,
                                 notebook=False)
     
-    # answers, classes = cluster_cohere(data_path=args.data_path,
-    #                             question_n=args.question_n,
-    #                             model_size='small',
-    #                             api_key='YOUR_API_KEY',
-    #                             embed_dim=2,
-    #                             eps=args.eps,
-    #                             min_samples=args.min_samples,
-    #                             save_dir=args.save_dir,
-    #                             notebook=False)
-    
     topics = extract_topics(text_data=answers, 
                             classes=classes, 
                             apply_tfidf=True, 
