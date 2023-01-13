@@ -87,7 +87,7 @@ if __name__=="__main__":
                         help='Question number to analyze from the survey.')
     
     parser.add_argument('--model_size', type=str, default='small', 
-                        help='The size of embedding model to use. Options: small, medium, large.')
+                        help='The size of embedding model to use. Options: small and large.')
     
     parser.add_argument('--embed_dim', type=int, default=2, 
                         help='The dimension to reduce the embeddings to for clustering.')
