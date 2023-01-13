@@ -74,7 +74,7 @@ The excel file [./example/classroom_norms.xlsx](./example/classroom_norms.xlsx) 
 
 <img src="./example/visualization.png" alt="image" width="500"/>
 
-To visualize this plot interactively, download [this .html file](./example/question_1_plot.html) and open it in your browser.
+To visualize this plot interactively, download [this .html file](./example/visual.html) and open it in your browser.
 
 ## Acknowledgements
 
