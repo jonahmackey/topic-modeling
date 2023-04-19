@@ -111,7 +111,7 @@ def extract_topics(text_data: list,
     topics_df = pd.DataFrame(topics, columns=['class', 'size', 'topics'])
     topics_df.to_csv(path_or_buf=save_dir + "topics.csv", index=False)
     
-    return topics_df['topics'].values.tolist()
+    return topics_df
 
 
 def cluster(data_path: str,
@@ -254,6 +254,8 @@ if __name__ == '__main__':
                             apply_tfidf=True, 
                             ignore_words=args.ignore_words,
                             save_dir=args.save_dir)
+    
+    topics = topics.values.tolist()
     
     # save results
     result = save_results(responses=responses,
