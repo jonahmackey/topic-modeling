@@ -189,7 +189,7 @@ def save_results(responses: list,
         sorted_indices = np.argsort(distances)
 
         # aggregate results
-        result += f'CLUSTER {cluster_idx} | SIZE {len(cluster)} | TOPICS {topics[cluster_idx]}:\n'
+        result += f'CLUSTER {cluster_idx} | SIZE {len(cluster)}/{len(embeddings)} | TOPICS {topics[cluster_idx]}:\n'
         for sentence_id in sorted_indices[:5]:
             result += f'\t{cluster_responses[sentence_id]}\n'
         result += "\t...\n" 
