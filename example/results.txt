@@ -1,0 +1,143 @@
+CLUSTER 6 | SIZE 64 | TOPICS help_would_treat_ask_kind:
+	i expect my peers to be supportive and understanding.
+	i expect my peers to be friendly and helpful.
+	i expect my peers to be respectful, be able to communicate effectively (eg.
+	i expect my peers to be very engaging and helpful to each other.
+	i expect my peers to be respectful and kind.
+	...
+	i expect that my peers do not judge me if i am struggling with an exercise that they consider to be easy.
+	i expect to find myself asking "stupid questions" every now and then, so i would expect my peers to do the same.
+	i have the constant fear of embarrassing myself in front of others so i need to feel as if my peers will accept me regardless.
+	i have the same needs and expectation from other people as for myself.
+	the same as i expect from myself.
+
+CLUSTER 1 | SIZE 63 | TOPICS work_together_ideas_collaborate_share:
+	working together, collaborative.
+	share ideas with each other and allow everyone to participate when doing group work.
+	help each other when needed.
+	be willing to share notes, and work together if needed.
+	and collaborate when necessary.
+	...
+	so, i will try my best to be the best in class and i expect them to be rivals.
+	i think rivalry would make a great progress in class and positive rivalry between students would improve them.
+	don't miss any team assignment.
+	instead, i aim for meaningful communication that is also cheerful at the same time.
+	they do not need to do too much work in the project, it i hope they finish their part perfectly, and the project will not have any problems.
+
+CLUSTER 0 | SIZE 56 | TOPICS patience_friendly_openness_willing_nice:
+	to be respectful and also willing to engage.
+	be helpful, nice, and respectful to each others.
+	friendly and supportive.
+	be willing to have discussions and conversations.
+	be respectable, supportive, critical, reliable, socially adept.
+	...
+	).
+	i.e.
+	list with partner:.
+	with my lecture partner, we came up with the following answers:.
+	#name?.
+
+CLUSTER 8 | SIZE 54 | TOPICS class_course_discussions_lectures_also:
+	i expect my peers to be someone i can talk to about various problems and subjects we learn in the course.
+	one thing i expect from my class peers is that they participate in group discussions actively.
+	i expect my peers to be open for teamwork and discussions about course concept.
+	i expect my peers to be familiar with the concepts in class well and to engage during class.
+	i also expect my peers to be a collaborative participant of the class.
+	...
+	speak english, social, etc.)
+	participate but not dominate group discussions.
+	to not be distracting during the period of our lectures when the professor is teaching the class.
+	3. good explanation and application of the concepts taught in lectures.
+	be interactive in class sessions (i.e.
+
+CLUSTER 2 | SIZE 50 | TOPICS also_help_new_others_hope:
+	i also expect them to be willing to listen to new ideas and perspectives and be ready to integrate them into their side of any group work we undergo.
+	i also expect them to help me and others in a nice and not in a condescending manner.
+	i expect them to be respectful and collaborative when working in groups.
+	i expect them to listen to what i have to say, be supportive and help me if they can.
+	i expect them to be respectful, and be able to work with me fairly and responsibly.
+	...
+	i also expect that if an answer i put forward is not quite right then everyone will be nonjudgemental and help me see why my answer was wrong and what i can improve upon.
+	i understand they are under alot of stress and are trying as much as i am.
+	it would be great if i could find someone who understands me.
+	willing to help me out sometimes but not just giving the answer.
+	i'd like to fing someone who can tolerent me in treating something and can also help me when i'm in trouble.
+
+CLUSTER 4 | SIZE 47 | TOPICS team_share_problems_working_together:
+	i expect my peers to offer support and foster collaboration.
+	i expect my peers to share their ideas and collaborate their problem solving and give insight if needed.
+	i expect my peers to be willing to cooperate with me to understand concepts, bounce ideas off each other, and complete tasks together when it is permitted.
+	i expect my peers to be engaged in what we're learning and willing to give input if we're working together.
+	i expect my peers to share their ideas from different perspectives and help when i find problems hard to solve.
+	...
+	our group came to the consensus that we would like our peers to not fail.
+	i want to get supports from my peers, such as giving reactions and or even asking questions on the thoughts that i share to them.
+	i would like to have a supportive peer group that i could study with together and discuss the stresses and challenges that may come into the way.
+	academic competition can be very helpful to us.
+	because my peers are from all over the world with the different eduction backgrounds, so i want to see if there are any new solutions on the same question.
+
+CLUSTER 3 | SIZE 39 | TOPICS questions_understand_understanding_question_learn:
+	i expect them to be able to answer questions in a coherent manner, and in a way that builds on my current understanding of the problem to a level of understanding that would allow me to complete the problem on my own.
+	i expect them/need them to collaborate and share ideas with me, in order to learn faster and more efficiently.
+	i hope my peers can figure out the questions together.
+	i expect my peers to be able to ask questions that they may have to either myself or the professors.
+	when they explain a topic to me, they will also learn.
+	...
+	keep up with class.
+	get better grades.
+	i also need the time to figure out myself.
+	they will not shame anyone for not knowing something.
+	i need help on homework's and assignments.
+
+CLUSTER 10 | SIZE 30 | TOPICS make_others_mistakes_struggling_mistake:
+	and not be judgmental if i make mistakes.
+	i expect my peers to not be judgmental if i or any of my classmates make a mistake.
+	not talk in a condescending tone with others.
+	not to belittle or treat others as inferior if they are struggling with a problem.
+	provide constructive criticism.
+	...
+	no judgment.
+	critique my ideas/offer feedback.
+	remember that this course is all about making mistakes and trying again.
+	english is my second language and that would make me even more stressed to talk my thoughts.
+	be considerate of the space (i.e.
+
+CLUSTER 9 | SIZE 25 | TOPICS environment_safe_create_university_space:
+	i'm hoping that my peers can all create an environment that is welcoming and supportive.
+	to create a comfortable learning environment i expect my peers to be respectful and inclusive towards others.
+	i expect my peers to have respect and help create a safe space where i can comfortably engage in.
+	honestly, i hope that my peers would form a welcoming and cooperative environment, especially since we are all experiencing our first year of universitya new norm.
+	i need my peers to create an accepting environment for me to be open enough to step out of my comfort zone.
+	...
+	by doing so, the working environment will be much more comfortable.
+	it's normal for everyone who is not familiar with a new environment and people.
+	unreasonably loud environments tend to be anxiety inducing and distracting for me.
+	in addition, i myself require acalm and grounded environment (i.e.
+	we've all gone through learning through the pandemic an it was not that easy, especially for some people.
+
+CLUSTER 5 | SIZE 25 | TOPICS respectful_respect_everyone_order_sharing:
+	i would appreciate it if all my peers are respectful.
+	i expect my peers to be respectful when sharing their thoughts about others.
+	we need to respect our peers and their thought.
+	be respectful to others and doing their work.
+	i wish my peers could be respectful and nice to everyone in our group.
+	...
+	1. respect each other.
+	respect (they respect the working environment and are willing to help create a positive one).
+	due to this, i need my peers to be willing to answer questions with due diligence in a way that does feel patronizing.
+	my classmates should have academic integrity (we can work together but they should not blatantly copy my answers).
+	respect.
+
+CLUSTER 7 | SIZE 17 | TOPICS contribute_discussion_listen_thoughts_discussions:
+	to share their thoughts in discussions.
+	to create valuable discussions and help each other with questions when needed.
+	to encourage each other and help each other.
+	for them to be friendly and open to sharing their thoughts on the questions we discuss.
+	to support each other and empathize with people when they struggle.
+	...
+	them to be supportive and interactive.
+	them to contribute to the discussion or play their part when it comes to teamwork.
+	so we could exchange ideas happily with both sides willing to respect and accept different opinions.
+	to respect me and my opinions.
+	supporting and remaining positive towards others.
+

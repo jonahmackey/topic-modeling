@@ -1,0 +1,7 @@
+Parameters:
+
+data_path: ./datasets/expect_from_peers.xlsx
+sent: True
+ignore_words: ['expect', 'peers']
+model: all-MiniLM-L12-v2
+thresh: 2.5
