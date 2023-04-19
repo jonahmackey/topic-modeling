@@ -34,7 +34,7 @@ def clean_data(text_data: list, sent: bool):
         clean_text = clean_text.replace('..', '.')
         clean_text = clean_text.strip()
         clean_text = clean_text.replace('  ', ' ')
-        if clean_text == '':
+        if clean_text == '' or clean_text == ' ':
             continue
         if clean_text[0] == ' ':
             clean_text = clean_text[1:]
