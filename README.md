@@ -23,9 +23,9 @@ The algorithm can be broken into 4 main steps.
 
 2. **Embedding:** Using a pre-trained transformer model from [Sentence Transformers](https://www.sbert.net/docs/pretrained_models.html), these sentences are embedded into a higher dimensional semantic space and converted into vectors. 
 
-3. **Clustering:** These lower dimensional embeddings are then clustered using the [DBSCAN algorithm](https://scikit-learn.org/stable/modules/clustering.html#dbscan). 
+3. **Clustering:** These lower dimensional embeddings are then clustered using [Agglomerative Clustering](https://scikit-learn.org/stable/modules/clustering.html#hierarchical-clustering). 
 
-4. **Topic extraction:** Topics are extracted for each cluster by computing the within cluster unigram frequencies, applying the class TF-IDF, then selecting the most frequent words. 
+4. **Topic extraction:** Topics are extracted for each cluster by computing the within cluster unigram frequencies, applying the class TF-IDF procedure, then selecting the most frequent words. 
 
 ## Acknowledgements
 
