@@ -1,4 +1,4 @@
-CLUSTER 6 | SIZE 64 | TOPICS help_would_treat_ask_kind:
+CLUSTER 6 | SIZE 64/470 | TOPICS help_would_treat_ask_kind:
 	i expect my peers to be supportive and understanding.
 	i expect my peers to be friendly and helpful.
 	i expect my peers to be respectful, be able to communicate effectively (eg.
@@ -11,7 +11,7 @@ CLUSTER 6 | SIZE 64 | TOPICS help_would_treat_ask_kind:
 	i have the same needs and expectation from other people as for myself.
 	the same as i expect from myself.
 
-CLUSTER 1 | SIZE 63 | TOPICS work_together_ideas_collaborate_share:
+CLUSTER 1 | SIZE 63/470 | TOPICS work_together_ideas_collaborate_share:
 	working together, collaborative.
 	share ideas with each other and allow everyone to participate when doing group work.
 	help each other when needed.
@@ -24,7 +24,7 @@ CLUSTER 1 | SIZE 63 | TOPICS work_together_ideas_collaborate_share:
 	instead, i aim for meaningful communication that is also cheerful at the same time.
 	they do not need to do too much work in the project, it i hope they finish their part perfectly, and the project will not have any problems.
 
-CLUSTER 0 | SIZE 56 | TOPICS patience_friendly_openness_willing_nice:
+CLUSTER 0 | SIZE 56/470 | TOPICS patience_friendly_openness_willing_nice:
 	to be respectful and also willing to engage.
 	be helpful, nice, and respectful to each others.
 	friendly and supportive.
@@ -37,7 +37,7 @@ CLUSTER 0 | SIZE 56 | TOPICS patience_friendly_openness_willing_nice:
 	with my lecture partner, we came up with the following answers:.
 	#name?.
 
-CLUSTER 8 | SIZE 54 | TOPICS class_course_discussions_lectures_also:
+CLUSTER 8 | SIZE 54/470 | TOPICS class_course_discussions_lectures_also:
 	i expect my peers to be someone i can talk to about various problems and subjects we learn in the course.
 	one thing i expect from my class peers is that they participate in group discussions actively.
 	i expect my peers to be open for teamwork and discussions about course concept.
@@ -50,7 +50,7 @@ CLUSTER 8 | SIZE 54 | TOPICS class_course_discussions_lectures_also:
 	3. good explanation and application of the concepts taught in lectures.
 	be interactive in class sessions (i.e.
 
-CLUSTER 2 | SIZE 50 | TOPICS also_help_new_others_hope:
+CLUSTER 2 | SIZE 50/470 | TOPICS also_help_new_others_hope:
 	i also expect them to be willing to listen to new ideas and perspectives and be ready to integrate them into their side of any group work we undergo.
 	i also expect them to help me and others in a nice and not in a condescending manner.
 	i expect them to be respectful and collaborative when working in groups.
@@ -63,7 +63,7 @@ CLUSTER 2 | SIZE 50 | TOPICS also_help_new_others_hope:
 	willing to help me out sometimes but not just giving the answer.
 	i'd like to fing someone who can tolerent me in treating something and can also help me when i'm in trouble.
 
-CLUSTER 4 | SIZE 47 | TOPICS team_share_problems_working_together:
+CLUSTER 4 | SIZE 47/470 | TOPICS team_share_problems_working_together:
 	i expect my peers to offer support and foster collaboration.
 	i expect my peers to share their ideas and collaborate their problem solving and give insight if needed.
 	i expect my peers to be willing to cooperate with me to understand concepts, bounce ideas off each other, and complete tasks together when it is permitted.
@@ -76,7 +76,7 @@ CLUSTER 4 | SIZE 47 | TOPICS team_share_problems_working_together:
 	academic competition can be very helpful to us.
 	because my peers are from all over the world with the different eduction backgrounds, so i want to see if there are any new solutions on the same question.
 
-CLUSTER 3 | SIZE 39 | TOPICS questions_understand_understanding_question_learn:
+CLUSTER 3 | SIZE 39/470 | TOPICS questions_understand_understanding_question_learn:
 	i expect them to be able to answer questions in a coherent manner, and in a way that builds on my current understanding of the problem to a level of understanding that would allow me to complete the problem on my own.
 	i expect them/need them to collaborate and share ideas with me, in order to learn faster and more efficiently.
 	i hope my peers can figure out the questions together.
@@ -89,7 +89,7 @@ CLUSTER 3 | SIZE 39 | TOPICS questions_understand_understanding_question_learn:
 	they will not shame anyone for not knowing something.
 	i need help on homework's and assignments.
 
-CLUSTER 10 | SIZE 30 | TOPICS make_others_mistakes_struggling_mistake:
+CLUSTER 10 | SIZE 30/470 | TOPICS make_others_mistakes_struggling_mistake:
 	and not be judgmental if i make mistakes.
 	i expect my peers to not be judgmental if i or any of my classmates make a mistake.
 	not talk in a condescending tone with others.
@@ -102,7 +102,7 @@ CLUSTER 10 | SIZE 30 | TOPICS make_others_mistakes_struggling_mistake:
 	english is my second language and that would make me even more stressed to talk my thoughts.
 	be considerate of the space (i.e.
 
-CLUSTER 9 | SIZE 25 | TOPICS environment_safe_create_university_space:
+CLUSTER 9 | SIZE 25/470 | TOPICS environment_safe_create_university_space:
 	i'm hoping that my peers can all create an environment that is welcoming and supportive.
 	to create a comfortable learning environment i expect my peers to be respectful and inclusive towards others.
 	i expect my peers to have respect and help create a safe space where i can comfortably engage in.
@@ -115,7 +115,7 @@ CLUSTER 9 | SIZE 25 | TOPICS environment_safe_create_university_space:
 	in addition, i myself require acalm and grounded environment (i.e.
 	we've all gone through learning through the pandemic an it was not that easy, especially for some people.
 
-CLUSTER 5 | SIZE 25 | TOPICS respectful_respect_everyone_order_sharing:
+CLUSTER 5 | SIZE 25/470 | TOPICS respectful_respect_everyone_order_sharing:
 	i would appreciate it if all my peers are respectful.
 	i expect my peers to be respectful when sharing their thoughts about others.
 	we need to respect our peers and their thought.
@@ -128,7 +128,7 @@ CLUSTER 5 | SIZE 25 | TOPICS respectful_respect_everyone_order_sharing:
 	my classmates should have academic integrity (we can work together but they should not blatantly copy my answers).
 	respect.
 
-CLUSTER 7 | SIZE 17 | TOPICS contribute_discussion_listen_thoughts_discussions:
+CLUSTER 7 | SIZE 17/470 | TOPICS contribute_discussion_listen_thoughts_discussions:
 	to share their thoughts in discussions.
 	to create valuable discussions and help each other with questions when needed.
 	to encourage each other and help each other.

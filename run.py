@@ -54,7 +54,8 @@ def clean_data(text_data: list, sent: bool):
 def extract_topics(text_data: list, 
                    classes: list, 
                    apply_tfidf: bool, 
-                   ignore_words: list):
+                   ignore_words: list,
+                   save_dir: str):
     """Extracts the top 5 unigrams from each cluster.
     
     Args:
@@ -102,9 +103,15 @@ def extract_topics(text_data: list,
         top5.reverse()
         top5 = '_'.join(top5)
         
-        topics.append(top5)
+        # get cluster size
+        size = f'{classes[classes == unique_classes[i]].shape[0]}/{len(classes)}'
+        
+        topics.append([unique_classes[i], size, top5])
+        
+    topics_df = pd.DataFrame(topics, columns=['class', 'size', 'topics'])
+    topics_df.to_csv(path_or_buf=save_dir + "topics.csv", index=False)
     
-    return topics
+    return topics_df['topics'].values.tolist()
 
 
 def cluster(data_path: str,
@@ -142,6 +149,7 @@ def cluster(data_path: str,
     classes = clustering_model.fit_predict(embeddings) # (556,)
     
     return responses, classes, embeddings
+
 
 def save_results(responses: list, 
                  classes: list, 
@@ -244,7 +252,8 @@ if __name__ == '__main__':
     topics = extract_topics(text_data=responses, 
                             classes=classes, 
                             apply_tfidf=True, 
-                            ignore_words=args.ignore_words)
+                            ignore_words=args.ignore_words,
+                            save_dir=args.save_dir)
     
     # save results
     result = save_results(responses=responses,
