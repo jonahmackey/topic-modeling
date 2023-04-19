@@ -2,7 +2,10 @@
 
 Notebook [![Open In Colab][colab-badge]][notebook]
 
+Notebook (DBSCAN) [![Open In Colab][colab-badge]][notebook2]
+
 [notebook]: <https://colab.research.google.com/drive/1mTNwulr2rKcdm2j9kCujaGN0tEdp_9ua?usp=sharing>
+[notebook2]: <https://colab.research.google.com/drive/1_aGPES9XfWvy1Qh4AzriJDTURkGxiSbX?usp=sharing>
 [colab-badge]: <https://colab.research.google.com/assets/colab-badge.svg>
 
 ---
